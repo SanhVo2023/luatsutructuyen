@@ -86,7 +86,7 @@ export function CategoryPill({
             {category.description}
           </p>
         )}
-        <span className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.66rem] uppercase tracking-wider text-white opacity-0 transition-all duration-300 group-hover:gap-2.5 group-hover:opacity-100">
+        <span className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.66rem] uppercase tracking-wider text-white/80 transition-all duration-300 group-hover:gap-2.5 group-hover:text-white">
           Xem tình huống →
         </span>
       </div>
