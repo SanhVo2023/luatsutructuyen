@@ -20,11 +20,10 @@ try {
 } catch {}
 
 const data = {
-  heroKicker: 'Luật sư thật · Trách nhiệm thật',
-  heroHeadline: 'Câu trả lời miễn phí không chịu trách nhiệm.',
-  heroHighlight: 'Luật sư thật thì có.',
-  heroSubhead:
-    'Mỗi vụ việc một khác. Gọi luật sư Apolo để được tư vấn đúng trường hợp của bạn — buổi đầu miễn phí, bảo mật tuyệt đối.',
+  heroKicker: 'Apolo Lawyers · Tư vấn pháp lý',
+  heroHeadline: 'Vướng mắc pháp lý?',
+  heroHighlight: 'Gọi luật sư thật.',
+  heroSubhead: 'Tư vấn đúng trường hợp của bạn. Buổi đầu miễn phí, bảo mật tuyệt đối.',
   heroCtaLabel: 'Gọi ngay 0903.419.479',
   heroCtaTel: 'tel:0903419479',
   trustBadges: [

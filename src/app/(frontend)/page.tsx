@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight, ArrowUpRight, Phone, ShieldCheck } from 'lucide-react'
 import { listCategories, listScenarios, getHomepage } from '@/lib/queries'
-import { LTT, getCategoryImagery } from '@/lib/imagery'
+import { getCategoryImagery } from '@/lib/imagery'
 import { HOTLINE_TEL, HOTLINE_PRETTY } from '@/lib/cta'
+import { HeroVisual } from '@/components/ui/HeroVisual'
 import { ScenarioCard } from '@/components/ui/ScenarioCard'
 import { FeatureCard } from '@/components/ui/FeatureCard'
 import { CtaBlock } from '@/components/ui/CtaBlock'
@@ -27,11 +27,10 @@ const UTILITY_SLUGS = ['co-nen-kien-khong', 'can-chuan-bi-gi']
 
 /** Editorial defaults — used when the CMS `homepage` global leaves a field blank. */
 const HERO_FALLBACK = {
-  kicker: 'Luật sư thật · Trách nhiệm thật',
-  headline: 'Câu trả lời miễn phí không chịu trách nhiệm.',
-  highlight: 'Luật sư thật thì có.',
-  subhead:
-    'Mỗi vụ việc một khác. Gọi luật sư Apolo để được tư vấn đúng trường hợp của bạn — buổi đầu miễn phí, bảo mật tuyệt đối.',
+  kicker: 'Apolo Lawyers · Tư vấn pháp lý',
+  headline: 'Vướng mắc pháp lý?',
+  highlight: 'Gọi luật sư thật.',
+  subhead: 'Tư vấn đúng trường hợp của bạn. Buổi đầu miễn phí, bảo mật tuyệt đối.',
   ctaLabel: `Gọi ngay ${HOTLINE_PRETTY}`,
 }
 const TRUST_FALLBACK = ['Buổi đầu miễn phí', 'Trích dẫn điều luật', 'Bảo mật tuyệt đối']
@@ -44,14 +43,6 @@ const TICKER_FALLBACK = [
   'Giành quyền nuôi con',
   'Chủ đầu tư chậm bàn giao căn hộ',
 ]
-
-function mediaUrl(m: unknown): string | null {
-  if (!m) return null
-  if (typeof m === 'string') return m
-  if (typeof m === 'number') return null // unpopulated upload id — no URL available
-  const doc = m as { url?: string | null; sizes?: { hero?: { url?: string | null } | null } | null }
-  return doc.sizes?.hero?.url ?? doc.url ?? null
-}
 
 export default async function HomePage() {
   const [categories, allScenarios, homepage] = await Promise.all([
@@ -67,7 +58,6 @@ export default async function HomePage() {
     highlight: hp.heroHighlight || HERO_FALLBACK.highlight,
     subhead: hp.heroSubhead || HERO_FALLBACK.subhead,
     ctaLabel: hp.heroCtaLabel || HERO_FALLBACK.ctaLabel,
-    image: mediaUrl(hp.heroImage) || LTT.heroPrimary,
   }
   const pickText = (arr: unknown): string[] =>
     Array.isArray(arr)
@@ -117,37 +107,10 @@ export default async function HomePage() {
         />
 
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 md:px-6 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:px-8 lg:py-24">
-          {/* Image — shown on every breakpoint (mobile-first), order-first on small screens */}
-          <ScrollReveal className="relative order-1 lg:order-2" y={20}>
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-xl shadow-[0_30px_90px_rgba(0,0,0,0.45)] sm:aspect-[16/10] lg:aspect-[4/5] lg:max-w-none">
-              <Image
-                src={hero.image}
-                alt="Luật sư Apolo giàu kinh nghiệm tư vấn pháp lý trong văn phòng luật chuyên nghiệp"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 48vw"
-                className="object-cover object-top"
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/70 via-transparent to-transparent" />
-              {/* Hotline chip replaces the old magazine gimmick */}
-              <a
-                href={HOTLINE_TEL}
-                data-cta="hero-chip"
-                className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-lg bg-[color:var(--color-surface-strong)]/95 px-4 py-3 backdrop-blur-sm transition-transform hover:-translate-y-0.5 sm:left-4 sm:right-auto"
-              >
-                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[color:var(--color-primary)] text-white">
-                  <Phone className="h-5 w-5" />
-                </span>
-                <span className="leading-tight">
-                  <span className="block font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[color:var(--color-text-secondary)]">
-                    Tổng đài tư vấn
-                  </span>
-                  <span className="block font-display text-lg font-semibold text-[color:var(--color-ink)]">
-                    {HOTLINE_PRETTY}
-                  </span>
-                </span>
-              </a>
-            </div>
+          {/* Interactive "Authority Seal" — animated, cursor-reactive. Replaces the
+              static photo. Shown on every breakpoint; order-first on mobile. */}
+          <ScrollReveal className="relative order-1 px-2 lg:order-2 lg:px-0" y={20}>
+            <HeroVisual />
           </ScrollReveal>
 
           {/* Copy */}

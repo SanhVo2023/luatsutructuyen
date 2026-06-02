@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
@@ -19,6 +20,10 @@ export function MobileNavDrawer({
   navLinks: NavLink[]
 }) {
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // Portal target only exists on the client.
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -27,26 +32,27 @@ export function MobileNavDrawer({
     }
   }, [open])
 
-  return (
-    <>
-      <button
-        type="button"
-        aria-label="Mở menu"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-[color:var(--color-ink)] hover:bg-[color:var(--color-surface)] lg:hidden"
-        onClick={() => setOpen(true)}
-      >
-        <Menu className="h-5 w-5" strokeWidth={1.75} />
-      </button>
+  // Close on Escape.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex flex-col bg-[color:var(--color-background)] lg:hidden"
-          >
+  // The overlay is portaled to <body> so it escapes the header's backdrop-blur
+  // containing block (a `backdrop-filter` ancestor traps `position: fixed`,
+  // which previously clipped this drawer to the ~72px header bar).
+  const overlay = (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[70] flex flex-col bg-[color:var(--color-background)] lg:hidden"
+        >
             <span className="grain" />
             <div className="relative flex h-16 items-center justify-between border-b border-[color:var(--color-hairline)] px-5">
               <span className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[color:var(--color-text-secondary)]">
@@ -132,6 +138,20 @@ export function MobileNavDrawer({
           </motion.div>
         )}
       </AnimatePresence>
+  )
+
+  return (
+    <>
+      <button
+        type="button"
+        aria-label="Mở menu"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-[color:var(--color-ink)] hover:bg-[color:var(--color-surface)] lg:hidden"
+        onClick={() => setOpen(true)}
+      >
+        <Menu className="h-5 w-5" strokeWidth={1.75} />
+      </button>
+
+      {mounted && createPortal(overlay, document.body)}
     </>
   )
 }
