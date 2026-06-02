@@ -1,0 +1,5 @@
+﻿words=3043
+citations=15
+cta=True
+rawHtml=False
+ltt=True

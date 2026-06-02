@@ -1,0 +1,23 @@
+{
+  "site": "luatsutructuyen.net",
+  "cdnBase": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev",
+  "notes": "Homepage redesign hero candidates. Strong, clear, authority-forward imagery to replace the weak existing hero. Imported to Media and wired into the redesigned hero.",
+  "images": [
+    {
+      "id": "home-hero-authority",
+      "category": "hero",
+      "aspect": "4:5",
+      "width": 1200,
+      "alt": "Luật sư Apolo giàu kinh nghiệm trong văn phòng luật chuyên nghiệp",
+      "prompt": "Editorial portrait of a confident, trustworthy Vietnamese male lawyer in his early 50s, wearing a well-tailored dark charcoal suit, standing or seated with composed authority in a sophisticated law office, shelves of law books softly blurred behind him, warm directional window light, calm and reassuring expression looking toward camera. Cinematic, photorealistic, dignified, oxblood and gold tones in the ambient palette, shallow depth of field, no text, no logos, no watermarks"
+    },
+    {
+      "id": "home-hero-consult",
+      "category": "hero",
+      "aspect": "4:5",
+      "width": 1200,
+      "alt": "Luật sư Apolo tư vấn trực tiếp cho khách hàng tại văn phòng",
+      "prompt": "Warm editorial photo of a Vietnamese lawyer in a dark suit consulting with a client across a wooden desk in a refined law office, scales of justice and law books in the background, documents and a fountain pen on the desk, attentive and trustworthy atmosphere, warm window light, cinematic photorealistic, oxblood and gold ambient tones, shallow depth of field, no readable text, no logos"
+    }
+  ]
+}

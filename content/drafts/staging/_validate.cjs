@@ -1,0 +1,13 @@
+const fs=require('fs');
+const p='E:/NEW APP/Apolo Website/sites/phase-2/luatsutructuyen.net/content/drafts/staging/co-nen-kien-cong-ty-bao-hiem-tu-choi-boi-thuong.json';
+const o=JSON.parse(fs.readFileSync(p,'utf8'));
+const b=o.vi.body;
+const words=b.split(/\s+/).filter(Boolean).length;
+const cites=(b.match(/\((Điều|Khoản|Án lệ|Nghị định|Thông tư|Luật)\s+\d/g)||[]);
+const cta=/\[[^\]]+\]\(\/lien-he\)/.test(b);
+const rawH1=/(^|\n)# /.test(b);
+const setext=/\n(=+|-+)\s*(\n|$)/.test(b);
+const html=/<[a-zA-Z\/][^>]*>/.test(b);
+const out={words,citationCount:cites.length,hasCta:cta,rawH1,setext,html,luatsutuvan:b.includes('luatsutuvan.net')};
+fs.writeFileSync(p.replace(/[^/]+$/,'_result.json'),JSON.stringify(out,null,2));
+console.log(JSON.stringify(out,null,2));

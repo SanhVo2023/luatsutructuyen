@@ -1,0 +1,274 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* =============================================================================
+   MODERN EDITORIAL INK — design system
+   Ink-on-warm-paper, one bold oxblood accent + gold highlight. High contrast,
+   characterful serif display, refined editorial motion.
+   ========================================================================== */
+@theme inline {
+  /* Surfaces */
+  --color-background: #F6F1E8;       /* warm ivory — page */
+  --color-surface: #FCFAF5;          /* raised cards / panels */
+  --color-surface-strong: #FFFFFF;   /* crispest white surface */
+  --color-ink: #1B1714;              /* near-black warm ink */
+
+  /* Text */
+  --color-text-primary: #1B1714;     /* body + headings (ink) */
+  --color-text-secondary: #6F665C;   /* captions, metadata */
+
+  /* Accents */
+  --color-primary: #9D3527;          /* OXBLOOD — links, marks, primary CTA */
+  --color-secondary: #C08A2D;        /* GOLD/OCHRE — underlines, dividers, highlights */
+  --color-accent: #5C6B4F;           /* DEEP OLIVE — positive / low urgency */
+  --color-alert: #B0472B;            /* RUST — high urgency */
+
+  /* Legacy semantic aliases (category `color` field maps to these) — retuned */
+  --color-terracotta: #9D3527;
+  --color-clay: #C08A2D;
+  --color-olive: #5C6B4F;
+  --color-rust: #B0472B;
+
+  /* Hairlines */
+  --color-hairline: rgba(27, 23, 20, 0.12);
+  --color-hairline-strong: rgba(27, 23, 20, 0.22);
+
+  /* Fonts */
+  --font-body: var(--font-body);
+  --font-display: var(--font-display);
+  --font-quote: var(--font-display);  /* pull-quotes use the display serif */
+  --font-mono: var(--font-mono);
+}
+
+/* ----------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Warm editorial scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-hairline-strong); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* ----------------------------------------------------------------------------
+   Editorial typographic primitives
+   ------------------------------------------------------------------------- */
+.font-display { font-family: var(--font-display), Georgia, serif; }
+.font-mono { font-family: var(--font-mono), ui-monospace, monospace; }
+
+/* Section eyebrow / kicker — small caps, tracked, gold rule */
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--color-secondary);
+  display: inline-block;
+}
+
+/* Display headline helper */
+.headline {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+}
+
+/* Pull-quote — display serif italic */
+.pull-quote {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* Oxblood ink-mark highlight on a word/phrase inside a headline */
+.ink-mark {
+  position: relative;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+.ink-mark::after {
+  content: "";
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  bottom: 0.06em;
+  height: 0.34em;
+  background: color-mix(in srgb, var(--color-secondary) 38%, transparent);
+  z-index: -1;
+  transform: skewX(-4deg);
+}
+
+/* Hairline divider with a gold mid-rule */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-secondary) 18%,
+    var(--color-secondary) 82%,
+    transparent 100%
+  );
+}
+.terracotta-divider { /* legacy name kept; now gold rule */
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-secondary) 50%, transparent);
+}
+
+/* Index numeral (mono) for editorial lists */
+.index-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+/* Statutory citation chip — e.g. (Điều 430 BLDS 2015). Body font for diacritics. */
+.citation-chip {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  border-radius: 4px;
+  padding: 0.05em 0.4em;
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------------------
+   Paper grain overlay (atmosphere, not a glow). Apply <span class="grain" />.
+   ------------------------------------------------------------------------- */
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+}
+
+/* ----------------------------------------------------------------------------
+   Article prose (Markdown.tsx) — editorial reading experience
+   ------------------------------------------------------------------------- */
+.prose {
+  --tw-prose-body: var(--color-text-primary);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-quotes: var(--color-text-secondary);
+  --tw-prose-quote-borders: var(--color-secondary);
+  --tw-prose-bullets: var(--color-secondary);
+  --tw-prose-counters: var(--color-primary);
+  --tw-prose-hr: var(--color-hairline);
+}
+.prose :where(h2) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 7rem;
+}
+.prose :where(h3) {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  scroll-margin-top: 7rem;
+}
+.prose :where(blockquote) {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  border-left-width: 3px;
+  border-color: var(--color-secondary);
+}
+.prose :where(a) { text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prose :where(figure figcaption) {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+/* Drop-cap on the first paragraph of an article body */
+.article-body > p:first-of-type::first-letter {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 700;
+  float: left;
+  font-size: 3.6rem;
+  line-height: 0.78;
+  padding: 0.1rem 0.6rem 0 0;
+  color: var(--color-primary);
+}
+
+/* ----------------------------------------------------------------------------
+   Animated link underline (use class="link-underline")
+   ------------------------------------------------------------------------- */
+.link-underline {
+  background-image: linear-gradient(var(--color-primary), var(--color-primary));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover { background-size: 100% 1.5px; }
+
+/* ----------------------------------------------------------------------------
+   Keyframes (referenced by motion components / utilities)
+   ------------------------------------------------------------------------- */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-28px, 36px); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(34px, -24px); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-18px, -30px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scroll-cue {
+  0% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(6px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.4; }
+}
+.animate-scroll-cue { animation: scroll-cue 2s ease-in-out infinite; }
+.animate-marquee { animation: marquee 32s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-cue,
+  .animate-marquee,
+  [style*="orb-drift"] { animation: none !important; }
+}

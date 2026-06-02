@@ -1,0 +1,59 @@
+{
+  "name": "luatsutructuyen.net",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "postinstall": "patch-package",
+    "seed:admin": "node scripts/seed-admin.mjs",
+    "seed:foundation": "node scripts/seed-foundation.mjs",
+    "seed:posts": "node scripts/seed-posts.mjs",
+    "seed:static-pages": "node scripts/seed-static-pages.mjs",
+    "seed:cms": "node scripts/seed-cms.mjs",
+    "import:content": "node scripts/import-seo-content.mjs",
+    "import:content:dry": "node scripts/import-seo-content.mjs --dry-run",
+    "import:images": "node scripts/import-images-to-media.mjs",
+    "import:posts": "node scripts/import-posts.mjs"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "^3.81.0",
+    "@payloadcms/next": "^3.81.0",
+    "@payloadcms/plugin-seo": "^3.81.0",
+    "@payloadcms/storage-s3": "^3.84.1",
+    "@payloadcms/ui": "^3.81.0",
+    "dotenv": "^17.4.1",
+    "framer-motion": "^12.38.0",
+    "graphql": "^16.13.2",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.469.0",
+    "next": "16.2.2",
+    "payload": "^3.81.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-markdown": "^9.0.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.0",
+    "schema-dts": "^2.0.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "bcryptjs": "^2.4.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.2",
+    "patch-package": "^8.0.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

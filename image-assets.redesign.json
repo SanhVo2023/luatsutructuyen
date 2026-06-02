@@ -1,0 +1,71 @@
+{
+  "site": "luatsutructuyen.net",
+  "cdnBase": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev",
+  "notes": "Modern Editorial Ink redesign — fresh warm editorial imagery to replace the dark-luxury reused assets. Run via tools/image-generator/headless.mjs. Reuse layer may still match some; gaps are generated. Shared art direction: warm editorial documentary photography, natural window light, ivory + oxblood color grade, subtle film grain, shallow depth of field, Vietnamese context, calm and human, no text, no watermark.",
+  "images": [
+    {
+      "id": "ltt-hero-editorial",
+      "category": "hero",
+      "aspect": "3:4",
+      "width": 1280,
+      "alt": "Người Việt đọc tài liệu pháp lý bên bàn gỗ trong ánh sáng tự nhiên ấm",
+      "prompt": "Editorial documentary photograph of a thoughtful Vietnamese person in their thirties reading legal documents at a sunlit wooden table at home, a notebook and pen nearby, warm domestic interior, soft natural window light, ivory and warm oxblood color grade, subtle film grain, shallow depth of field, calm and human, candid, no text, no watermark"
+    },
+    {
+      "id": "ltt-cover-dan-su",
+      "category": "hub",
+      "aspect": "4:3",
+      "width": 1280,
+      "alt": "Hai người xem lại hợp đồng dân sự trên bàn gỗ",
+      "prompt": "Editorial documentary photograph of two people reviewing a paper contract across a warm wooden table, hands and documents in focus, civil agreement, soft natural light, ivory and oxblood color grade, subtle film grain, shallow depth of field, no faces emphasized, no text, no watermark"
+    },
+    {
+      "id": "ltt-cover-ly-hon",
+      "category": "hub",
+      "aspect": "4:3",
+      "width": 1280,
+      "alt": "Chiếc nhẫn cưới đặt cạnh lá thư bên cửa sổ",
+      "prompt": "Editorial still-life photograph of a single gold wedding ring resting on a handwritten letter beside a window, quiet restrained morning light, warm ivory tones with a hint of oxblood, subtle film grain, shallow depth of field, emotional but calm, no text, no watermark"
+    },
+    {
+      "id": "ltt-cover-dat-dai",
+      "category": "hub",
+      "aspect": "4:3",
+      "width": 1280,
+      "alt": "Sổ đỏ và bản đồ thửa đất trên bàn trong ánh sáng ấm",
+      "prompt": "Editorial photograph of a red Vietnamese land-use certificate document and a property map laid on a warm wooden desk, a pen and reading glasses nearby, soft daylight, ivory and oxblood color grade, subtle film grain, shallow depth of field, top-down angle, no text overlay, no watermark"
+    },
+    {
+      "id": "ltt-cover-doanh-nghiep",
+      "category": "hub",
+      "aspect": "4:3",
+      "width": 1280,
+      "alt": "Chủ doanh nghiệp nhỏ xem lại hóa đơn tại bàn làm việc",
+      "prompt": "Editorial documentary photograph of a small Vietnamese business owner reviewing invoices and a laptop at a modest tidy office desk, warm window light, ivory and oxblood color grade, subtle film grain, shallow depth of field, candid and human, no text, no watermark"
+    },
+    {
+      "id": "ltt-cover-co-nen-kien",
+      "category": "hub",
+      "aspect": "4:3",
+      "width": 1280,
+      "alt": "Cân nhắc quyết định bên tài liệu và máy tính cầm tay",
+      "prompt": "Editorial photograph of a contemplative person weighing a decision at a desk, documents, a calculator and a cup of tea, hand resting on chin, warm reflective mood, ivory and oxblood color grade, subtle film grain, shallow depth of field, no text, no watermark"
+    },
+    {
+      "id": "ltt-cover-chuan-bi",
+      "category": "hub",
+      "aspect": "4:3",
+      "width": 1280,
+      "alt": "Giấy tờ pháp lý được sắp xếp gọn gàng trên bàn",
+      "prompt": "Editorial top-down photograph of neatly organized legal documents, labelled folders, identity papers and a fountain pen arranged on a warm wooden desk, soft daylight, ivory and oxblood color grade, subtle film grain, orderly and calm, no text, no watermark"
+    },
+    {
+      "id": "ltt-authority-atmosphere",
+      "category": "background",
+      "aspect": "16:9",
+      "width": 1600,
+      "alt": "Không gian văn phòng luật ấm áp với kệ sách bên cửa sổ",
+      "prompt": "Editorial photograph of a warm law-office interior, floor-to-ceiling wooden bookshelves of legal volumes, a reading desk by a tall window, no people, soft natural daylight, ivory and warm amber tones with subtle oxblood accents, gentle film grain, shallow depth of field, dignified and human, no text, no watermark"
+    }
+  ]
+}

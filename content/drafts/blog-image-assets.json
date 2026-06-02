@@ -1,0 +1,119 @@
+{
+  "site": "luatsutructuyen.net",
+  "cdnBase": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev",
+  "notes": "Blog (Góc Luật Sư) hero images, keyed by the imageKey each post in content/drafts/posts-batch-*.json references. Reuse-first: the generator semantically matches against the shared R2 pool and only generates the gaps. After generation, scripts/import-images-to-media.mjs imports the resulting assets.json into the Media collection (key = id) and import-posts.mjs links each post's heroImage by imageKey.",
+  "images": [
+    {
+      "id": "ai-hallucination",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Trí tuệ nhân tạo có thể bịa ra điều luật không có thật",
+      "prompt": "Conceptual editorial illustration: a glowing AI chatbot interface overlaying an open law book, some text dissolving into glitchy pixels, suggesting fabricated or unreliable legal information. Muted ink, oxblood red and gold accents, dark sophisticated tone, photorealistic with subtle digital distortion, no readable text, no logos"
+    },
+    {
+      "id": "ai-vs-lawyer",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "So sánh giữa câu trả lời của AI và tư vấn của luật sư thật",
+      "prompt": "Split-composition editorial photo: on one side a cold glowing computer/AI screen, on the other a warm human lawyer's desk with scales of justice, law books and a fountain pen. Contrast of machine vs human authority. Oxblood and gold accents on ink-dark background, photorealistic, cinematic, no readable text, no logos"
+    },
+    {
+      "id": "online-answer-risk",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Rủi ro khi tin vào câu trả lời pháp lý miễn phí trên mạng",
+      "prompt": "Editorial concept: a person at a laptop late at night searching for legal answers, a faint warning/question-mark motif, sense of uncertainty and risk. Moody warm-and-dark lighting, oxblood and gold tones, photorealistic, professional, no readable text, no logos"
+    },
+    {
+      "id": "accountability",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Trách nhiệm nghề nghiệp của luật sư khi tư vấn",
+      "prompt": "A lawyer in a suit shaking hands or signing a document with a client across a desk, scales of justice and law books nearby, conveying accountability and trust. Warm professional lighting, oxblood and gold accents on ink tones, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "confidentiality",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Bảo mật thông tin khi trao đổi với luật sư",
+      "prompt": "Conceptual editorial image of legal confidentiality: a closed folder with a lock or a private one-on-one consultation in a quiet office, sense of discretion and protected information. Dark elegant tones, oxblood and gold accents, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "court-process",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Thủ tục tố tụng và quy trình tại tòa án",
+      "prompt": "A judge's wooden gavel resting on a sound block beside legal documents in a courtroom or chambers, formal and authoritative atmosphere. Warm directional light, oxblood and gold accents on ink-dark background, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "civil-contract",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Hợp đồng dân sự và điều kiện có hiệu lực",
+      "prompt": "Close-up of two hands signing a formal contract with a fountain pen, official stamped documents on a desk, professional legal setting. Warm tones, oxblood and gold accents, photorealistic, shallow depth of field, no readable text, no logos"
+    },
+    {
+      "id": "land-dispute",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Tranh chấp đất đai và ranh giới nhà đất",
+      "prompt": "Conceptual real-estate law image: a small house model with a land-use certificate document and keys, or a boundary fence between two plots of land, suggesting a property dispute. Warm professional tones, oxblood and gold accents, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "divorce-assets",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Phân chia tài sản và quyền nuôi con khi ly hôn",
+      "prompt": "Symbolic family-law image: two wedding rings placed apart on a legal document, soft and emotional but dignified, suggesting divorce and division of assets. Warm muted tones, oxblood and gold accents, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "inheritance",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Thừa kế theo pháp luật và theo di chúc",
+      "prompt": "A last will and testament document with a fountain pen and an official seal on an antique wooden desk, warm library backdrop, conveying inheritance and estate law. Oxblood and gold accents on ink tones, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "business-debt",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Thu hồi công nợ và xử lý tranh chấp doanh nghiệp",
+      "prompt": "Corporate legal setting: a businessperson reviewing financial documents and contracts at a modern office desk, calculator and pen, suggesting debt recovery and commercial disputes. Professional cool-and-warm tones, oxblood and gold accents, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "business-formation",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Thành lập doanh nghiệp và lựa chọn loại hình",
+      "prompt": "Modern business and law concept: a handshake or a desk with company registration documents, a pen and a model office building, in a bright corporate setting. Professional tones, oxblood and gold accents, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "labor-contract",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Hợp đồng lao động và quyền lợi người lao động",
+      "prompt": "An employment contract document on a desk with a pen, in a professional HR/office environment, suggesting labor law and workers' rights. Warm professional lighting, oxblood and gold accents on ink tones, photorealistic, no readable text, no logos"
+    },
+    {
+      "id": "legal-update",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1376,
+      "alt": "Cập nhật quy định pháp luật mới",
+      "prompt": "Editorial concept of changing laws: stacked law code books with a fresh document or a calendar motif, conveying newly updated legislation. Authoritative library atmosphere, oxblood and gold accents on dark ink tones, photorealistic, no readable text, no logos"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e3a5f"/>
+      <stop offset="1" stop-color="#0f1f33"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <g stroke="#c9a14a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- central column -->
+    <path d="M32 14 L32 46"/>
+    <!-- beam -->
+    <path d="M16 22 L48 22"/>
+    <!-- base -->
+    <path d="M24 50 L40 50"/>
+    <!-- left pan chains + bowl -->
+    <path d="M16 22 L11 33 L21 33 Z"/>
+    <!-- right pan chains + bowl -->
+    <path d="M48 22 L43 33 L53 33 Z"/>
+  </g>
+  <circle cx="32" cy="14" r="3" fill="#c9a14a"/>
+</svg>

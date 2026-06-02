@@ -1,0 +1,31 @@
+{
+  "site": "luatsutructuyen.net",
+  "cdnBase": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev",
+  "notes": "Authority-pivot imagery — professional Apolo law-firm photos to project expertise (hero + authority + blog). Run via tools/image-generator/headless.mjs (reuse-first, --dry-run first). Shared art direction: warm editorial documentary photography, natural window light, ivory + oxblood color grade, subtle film grain, shallow depth of field, professional Vietnamese law-office context, dignified and human, no text, no watermark.",
+  "images": [
+    {
+      "id": "ltt-hero-authority",
+      "category": "hero",
+      "aspect": "3:4",
+      "width": 1280,
+      "alt": "Luật sư Apolo trao đổi tư vấn pháp lý trong văn phòng luật chuyên nghiệp",
+      "prompt": "Editorial documentary portrait of a confident Vietnamese lawyer in a tailored suit at a modern law-office desk, reviewing legal documents, warm wooden shelves of law books behind, natural window light, authoritative yet approachable, ivory and warm oxblood color grade, subtle film grain, shallow depth of field, professional, no text, no watermark"
+    },
+    {
+      "id": "ltt-firm-office",
+      "category": "background",
+      "aspect": "16:9",
+      "width": 1600,
+      "alt": "Văn phòng Công ty Luật Apolo Lawyers hiện đại, chuyên nghiệp",
+      "prompt": "Editorial photograph of a modern professional Vietnamese law-firm interior — a polished meeting table, leather chairs, floor-to-ceiling shelves of legal volumes, a city window with soft daylight, no people, warm ivory and amber tones with subtle oxblood accents, gentle film grain, shallow depth of field, dignified and premium, no text, no watermark"
+    },
+    {
+      "id": "ltt-goc-luatsu-cover",
+      "category": "blog",
+      "aspect": "16:9",
+      "width": 1600,
+      "alt": "Luật sư viết phân tích pháp lý tại bàn làm việc",
+      "prompt": "Editorial documentary photograph of a lawyer's hands writing legal analysis with a fountain pen beside an open law book and a laptop, warm wooden desk, natural window light, ivory and oxblood color grade, subtle film grain, shallow depth of field, thoughtful and professional, no faces, no text, no watermark"
+    }
+  ]
+}

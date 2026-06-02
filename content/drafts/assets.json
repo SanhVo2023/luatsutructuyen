@@ -1,0 +1,24 @@
+[
+  {
+    "id": "home-hero-authority",
+    "name": "home-hero-authority",
+    "category": "hero",
+    "width": 928,
+    "aspect": "4:5",
+    "cdn_url": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/luatsutructuyen.net/hero/home-hero-authority-3f4720cc.webp",
+    "local_path": null,
+    "alt": "Luật sư Apolo giàu kinh nghiệm trong văn phòng luật chuyên nghiệp",
+    "description": "Editorial portrait of a confident, trustworthy Vietnamese male lawyer in his early 50s, wearing a well-tailored dark charcoal suit, standing or seated with comp"
+  },
+  {
+    "id": "home-hero-consult",
+    "name": "home-hero-consult",
+    "category": "hero",
+    "width": 928,
+    "aspect": "4:5",
+    "cdn_url": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/luatsutructuyen.net/hero/home-hero-consult-b7dbd35e.webp",
+    "local_path": null,
+    "alt": "Luật sư Apolo tư vấn trực tiếp cho khách hàng tại văn phòng",
+    "description": "Warm editorial photo of a Vietnamese lawyer in a dark suit consulting with a client across a wooden desk in a refined law office, scales of justice and law book"
+  }
+]

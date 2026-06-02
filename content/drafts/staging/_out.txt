@@ -1,0 +1,9 @@
+{
+  "words": 3795,
+  "citationCount": 17,
+  "hasCta": true,
+  "rawH1": false,
+  "setext": false,
+  "html": false,
+  "luatsutuvan": true
+}

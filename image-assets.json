@@ -1,0 +1,87 @@
+{
+  "site": "luatsutructuyen.net",
+  "cdnBase": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev",
+  "notes": "Reuse-first manifest for the headless image generator (tools/image-generator/headless.mjs). Entries with reuse:true point at existing shared R2 assets from the vothienhien.com pool (see shared-assets/r2-shared/MANIFEST.md) and are skipped during generation to keep cost at $0. Only entries without a reuseUrl are generated.",
+  "images": [
+    {
+      "id": "home-hero",
+      "category": "hero",
+      "alt": "Tư vấn pháp luật trực tuyến cùng luật sư Apolo - văn phòng luật hiện đại tại TP. Hồ Chí Minh",
+      "prompt": "Modern Vietnamese law firm office building exterior, glass facade, professional, daytime, Ho Chi Minh City skyline backdrop, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/office/office-exterior-a1b2c3.webp"
+    },
+    {
+      "id": "hub-tinh-huong-dan-su",
+      "category": "hub",
+      "alt": "Tình huống pháp luật dân sự - hợp đồng, giao dịch và tranh chấp dân sự",
+      "prompt": "Close-up of hands signing legal contract, professional setting, fountain pen, official documents, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/document/contract-signing-m4n5o6.webp"
+    },
+    {
+      "id": "hub-tinh-huong-ly-hon",
+      "category": "hub",
+      "alt": "Tình huống ly hôn - thủ tục ly hôn, chia tài sản và quyền nuôi con",
+      "prompt": "Symbolic representation of family law, wedding rings and legal documents, warm tones, professional, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/practice/family-law-y7z8a9.webp"
+    },
+    {
+      "id": "hub-tinh-huong-dat-dai",
+      "category": "hub",
+      "alt": "Tình huống đất đai - tranh chấp đất, sổ đỏ và thủ tục chuyển nhượng nhà đất",
+      "prompt": "Real estate law concept, house model with legal documents and keys, professional, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/practice/real-estate-e4f5g6.webp"
+    },
+    {
+      "id": "hub-tinh-huong-doanh-nghiep",
+      "category": "hub",
+      "alt": "Tình huống doanh nghiệp - thành lập công ty, hợp đồng kinh doanh và tranh chấp thương mại",
+      "prompt": "Corporate business law concept, modern office handshake, contracts, professional blue tones, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/practice/business-law-b1c2d3.webp"
+    },
+    {
+      "id": "hub-co-nen-kien-khong",
+      "category": "hub",
+      "alt": "Có nên kiện không - cân nhắc khởi kiện và giải quyết tranh chấp tại tòa án",
+      "prompt": "Wooden judge's gavel on desk, scales of justice in background, law books, warm professional lighting, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/document/gavel-p7q8r9.webp"
+    },
+    {
+      "id": "hub-general-og",
+      "category": "hub",
+      "alt": "Luật Sư Trực Tuyến - thư viện tình huống pháp luật và tư vấn pháp lý trực tuyến",
+      "prompt": "Stack of legal documents with official seals, fountain pen, Vietnamese legal paperwork, professional desk, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/document/legal-docs-j1k2l3.webp"
+    },
+    {
+      "id": "scenario-generic-library",
+      "category": "content",
+      "alt": "Nghiên cứu tình huống pháp luật trong thư viện luật",
+      "prompt": "Rows of legal reference books on wooden shelves, law library, warm lighting, scholarly atmosphere, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/library/law-library-s1t2u3.webp"
+    },
+    {
+      "id": "scenario-generic-codebooks",
+      "category": "content",
+      "alt": "Tra cứu điều luật trong bộ luật Việt Nam",
+      "prompt": "Close-up of Vietnamese legal code books, gold lettering on spines, professional, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/library/books-closeup-v4w5x6.webp"
+    },
+    {
+      "id": "scenario-generic-consultation",
+      "category": "content",
+      "alt": "Buổi tư vấn pháp luật trực tuyến với luật sư tại phòng họp",
+      "prompt": "Professional law firm conference room, large wooden table, city view windows, leather chairs, photorealistic",
+      "reuse": true,
+      "reuseUrl": "https://pub-ebe397ad6fc946888f5c9aacc3cc48bb.r2.dev/vothienhien.com/office/meeting-room-g7h8i9.webp"
+    }
+  ]
+}
