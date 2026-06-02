@@ -7,7 +7,9 @@ import { JsonLd } from '@/components/ui/JsonLd'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
-export const revalidate = 3600
+// Render on demand (not at build) so static export doesn't exhaust the shared
+// Supabase Session Pooler (15-conn cap). Data is memoized via unstable_cache.
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('dieu-khoan-su-dung')

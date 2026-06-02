@@ -83,6 +83,10 @@ export default buildConfig({
     schemaName: 'ltt',
     pool: {
       connectionString: process.env.DATABASE_URI,
+      // The Supabase Session Pooler is shared (pool_size 15) across the Funnel
+      // project, so keep each instance's footprint small to avoid EMAXCONNSESSION.
+      max: 4,
+      idleTimeoutMillis: 10_000,
     },
   }),
 

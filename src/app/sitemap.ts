@@ -1,6 +1,10 @@
 import type { MetadataRoute } from 'next'
 import { listCategories, listScenarios, listPosts, type CategoryDoc } from '@/lib/queries'
 
+// Generated on demand (not at build) so it doesn't add to the shared Supabase
+// Session Pooler load during static export. Cached at runtime via unstable_cache.
+export const dynamic = 'force-dynamic'
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

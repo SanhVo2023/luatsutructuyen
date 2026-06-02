@@ -11,7 +11,9 @@ import DrawDivider from '@/components/animations/DrawDivider'
 import { getAuthorityManifesto } from '@/lib/queries'
 import { WHY_LAWYER_HERO, ONLINE_VS_LAWYER } from '@/content/why-lawyer'
 
-export const revalidate = 3600
+// Render on demand (not at build) so static export doesn't exhaust the shared
+// Supabase Session Pooler (15-conn cap). Data is memoized via unstable_cache.
+export const dynamic = 'force-dynamic'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 

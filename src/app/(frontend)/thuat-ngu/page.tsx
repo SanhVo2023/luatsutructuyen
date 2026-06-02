@@ -8,7 +8,9 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import { getGlossaryTerms } from '@/lib/queries'
 import { GLOSSARY } from '@/content/glossary'
 
-export const revalidate = 3600
+// Render on demand (not at build) so static export doesn't exhaust the shared
+// Supabase Session Pooler (15-conn cap). Data is memoized via unstable_cache.
+export const dynamic = 'force-dynamic'
 
 type GlossaryEntry = { term: string; slug: string; definition: string; seeAlso: string[] }
 
