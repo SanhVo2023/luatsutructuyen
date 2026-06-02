@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { ClipboardCheck, Clock, CalendarDays, Compass } from 'lucide-react'
@@ -11,6 +10,7 @@ import {
   type AuthorDoc,
 } from '@/lib/queries'
 import { getCategoryImagery } from '@/lib/imagery'
+import { ArticleBanner } from '@/components/ui/ArticleBanner'
 import { Markdown } from '@/components/Markdown'
 import { Breadcrumb, breadcrumbJsonLd } from '@/components/ui/Breadcrumb'
 import { JsonLd } from '@/components/ui/JsonLd'
@@ -29,13 +29,6 @@ import { urgencyMeta, outcomeMeta, toneVar } from '@/lib/scenario-meta'
 export const dynamic = 'force-dynamic'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
-
-const tintWash: Record<string, string> = {
-  terracotta: 'var(--color-primary)',
-  clay: 'var(--color-secondary)',
-  olive: 'var(--color-accent)',
-  rust: 'var(--color-alert)',
-}
 
 type Params = Promise<{ categorySlug: string; scenarioSlug: string }>
 
@@ -76,8 +69,9 @@ export default async function ScenarioDetailPage({ params }: { params: Params })
 
   const hero = scenario.heroImage as MediaDoc | null
   const fallback = getCategoryImagery(cat.slug)
-  const heroUrl = hero?.sizes?.hero?.url ?? hero?.url ?? fallback?.src ?? null
-  const heroAlt = hero?.alt ?? fallback?.alt ?? scenario.title
+  // Real image (if any) feeds the OG/social card + JSON-LD; the on-page hero is a
+  // unique gradient banner so scenarios never share the same visual.
+  const heroUrl = hero?.sizes?.og?.url ?? hero?.url ?? fallback?.src ?? null
   const heroTint = fallback?.tint ?? 'terracotta'
   const author = (scenario.author as AuthorDoc | null) ?? null
   const authorName = author?.name ?? EDITORIAL_AUTHOR.name
@@ -159,31 +153,15 @@ export default async function ScenarioDetailPage({ params }: { params: Params })
         </div>
       </section>
 
-      {/* Hero figure */}
-      {heroUrl && (
-        <figure className="mx-auto mt-8 max-w-5xl px-4 md:px-6 lg:px-8">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-[color:var(--color-hairline)] shadow-[0_20px_60px_rgba(27,23,20,0.12)]">
-            <Image
-              src={heroUrl}
-              alt={heroAlt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              className="object-cover"
-              priority
-            />
-            {!hero && (
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 mix-blend-multiply opacity-30"
-                style={{ background: `linear-gradient(135deg, ${tintWash[heroTint]}, transparent 65%)` }}
-              />
-            )}
-          </div>
-          <figcaption className="mt-2 font-mono text-[0.7rem] uppercase tracking-wider text-[color:var(--color-text-secondary)]">
-            {heroAlt}
-          </figcaption>
-        </figure>
-      )}
+      {/* Hero banner — unique abstract gradient per scenario */}
+      <figure className="mx-auto mt-8 max-w-5xl px-4 md:px-6 lg:px-8">
+        <ArticleBanner
+          seed={scenario.slug}
+          label={cat.name}
+          showTitle={false}
+          className="aspect-[16/9] w-full rounded-xl shadow-[0_20px_60px_rgba(27,23,20,0.12)]"
+        />
+      </figure>
 
       {/* Body + TOC */}
       <article className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-12 md:px-6 md:py-16 lg:grid-cols-[minmax(0,1fr)_240px] lg:px-8">

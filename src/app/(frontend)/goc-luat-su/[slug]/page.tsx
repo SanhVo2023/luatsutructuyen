@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Clock, CalendarDays } from 'lucide-react'
 import { getPostBySlug, type MediaDoc, type AuthorDoc } from '@/lib/queries'
 import { LTT } from '@/lib/imagery'
 import { postTopicLabel } from '@/lib/post-meta'
+import { ArticleBanner } from '@/components/ui/ArticleBanner'
 import { Markdown } from '@/components/Markdown'
 import { Breadcrumb, breadcrumbJsonLd } from '@/components/ui/Breadcrumb'
 import { JsonLd } from '@/components/ui/JsonLd'
@@ -49,8 +49,9 @@ export default async function PostDetailPage({ params }: { params: Params }) {
   if (!post || post.status !== 'published') notFound()
 
   const hero = post.heroImage as MediaDoc | null
-  const heroUrl = hero?.sizes?.hero?.url ?? hero?.url ?? LTT.blogCover
-  const heroAlt = hero?.alt ?? post.title
+  // Real image (if any) is reserved for the OG/social card; the on-page hero is a
+  // unique gradient banner so no two articles share the same visual.
+  const heroUrl = hero?.sizes?.og?.url ?? hero?.url ?? LTT.blogCover
   const author = (post.author as AuthorDoc | null) ?? null
   const authorName = author?.name ?? EDITORIAL_AUTHOR.name
   const authorRole = author?.role ?? 'Đội ngũ biên tập pháp lý Apolo Lawyers'
@@ -112,16 +113,12 @@ export default async function PostDetailPage({ params }: { params: Params }) {
       </section>
 
       <figure className="mx-auto mt-8 max-w-5xl px-4 md:px-6 lg:px-8">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-[color:var(--color-hairline)] shadow-[0_20px_60px_rgba(27,23,20,0.12)]">
-          <Image
-            src={heroUrl}
-            alt={heroAlt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover"
-            priority
-          />
-        </div>
+        <ArticleBanner
+          seed={post.slug}
+          label={topic}
+          showTitle={false}
+          className="aspect-[16/9] w-full rounded-xl shadow-[0_20px_60px_rgba(27,23,20,0.12)]"
+        />
       </figure>
 
       <article className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-12 md:px-6 md:py-16 lg:grid-cols-[minmax(0,1fr)_240px] lg:px-8">

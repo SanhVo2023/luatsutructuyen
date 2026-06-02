@@ -1,53 +1,28 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight, Clock } from 'lucide-react'
-import type { ScenarioDoc, CategoryDoc, MediaDoc } from '@/lib/queries'
-import { getCategoryImagery } from '@/lib/imagery'
-import HoverZoom from '@/components/animations/HoverZoom'
+import type { ScenarioDoc, CategoryDoc } from '@/lib/queries'
+import { ArticleBanner } from '@/components/ui/ArticleBanner'
 import { urgencyMeta, toneVar } from '@/lib/scenario-meta'
-
-const tintWash: Record<string, string> = {
-  terracotta: 'var(--color-primary)',
-  clay: 'var(--color-secondary)',
-  olive: 'var(--color-accent)',
-  rust: 'var(--color-alert)',
-}
 
 /**
  * Large editorial "story of the week" card — asymmetric split, big serif
- * headline, italic pull-quote excerpt, gold-ruled meta rail. Image uses HoverZoom.
+ * headline, italic pull-quote excerpt, gold-ruled meta rail. The visual side is
+ * a unique gradient banner derived from the scenario slug.
  */
 export function FeatureCard({ scenario }: { scenario: ScenarioDoc }) {
   const cat = scenario.category as CategoryDoc
-  const hero = scenario.heroImage as MediaDoc | null
-  const fallback = getCategoryImagery(cat?.slug)
-  const imgSrc = hero?.sizes?.hero?.url || hero?.url || fallback?.src || null
-  const imgAlt = hero?.alt || fallback?.alt || scenario.title
-  const tint = fallback?.tint ?? 'terracotta'
   const urgency = urgencyMeta(scenario.urgencyLevel)
   const href = cat?.slug ? `/${cat.slug}/${scenario.slug}` : `/tinh-huong/${scenario.slug}`
 
   return (
-    <article className="group grid grid-cols-1 overflow-hidden rounded-lg border border-[color:var(--color-hairline)] bg-[color:var(--color-surface-strong)] transition-shadow duration-500 hover:shadow-[0_28px_70px_rgba(27,23,20,0.14)] lg:grid-cols-[1.05fr_1fr]">
-      <Link href={href} className="relative block min-h-[280px] overflow-hidden lg:min-h-[460px]">
-        <HoverZoom scale={1.06} className="absolute inset-0 h-full w-full">
-          {imgSrc && (
-            <Image
-              src={imgSrc}
-              alt={imgAlt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover"
-              priority
-            />
-          )}
-        </HoverZoom>
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 mix-blend-multiply opacity-30"
-          style={{ background: `linear-gradient(135deg, ${tintWash[tint]}, transparent 65%)` }}
+    <article className="group grid grid-cols-1 overflow-hidden rounded-2xl bg-[color:var(--color-surface-strong)] shadow-[0_1px_0_var(--color-hairline)] transition-shadow duration-500 hover:shadow-[0_28px_70px_rgba(27,23,20,0.14)] lg:grid-cols-[1.05fr_1fr]">
+      <Link href={href} className="relative block min-h-[260px] overflow-hidden lg:min-h-[460px]">
+        <ArticleBanner
+          seed={scenario.slug}
+          showTitle={false}
+          className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]"
         />
-        <span className="pointer-events-none absolute left-5 top-5 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-ink)]/85 px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-[color:var(--color-background)] backdrop-blur-sm">
+        <span className="pointer-events-none absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-sm bg-[color:var(--color-ink)]/85 px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-[color:var(--color-background)] backdrop-blur-sm">
           Câu chuyện trong tuần
         </span>
       </Link>

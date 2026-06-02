@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowUpRight, Clock } from 'lucide-react'
-import { listPosts, type MediaDoc } from '@/lib/queries'
-import { LTT } from '@/lib/imagery'
+import { listPosts } from '@/lib/queries'
 import { postTopicLabel } from '@/lib/post-meta'
+import { ArticleBanner } from '@/components/ui/ArticleBanner'
 import { PageHero } from '@/components/ui/PageHero'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { breadcrumbJsonLd } from '@/components/ui/Breadcrumb'
@@ -45,33 +44,26 @@ export default async function BlogIndexPage() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             <StaggerReveal staggerDelay={0.07} className="contents">
               {posts.map((post) => {
-                const hero = post.heroImage as MediaDoc | null
-                const img = hero?.sizes?.card?.url || hero?.url || LTT.blogCover
                 const topic = postTopicLabel(post.topic)
                 return (
                   <Link
                     key={String(post.id)}
                     href={`/goc-luat-su/${post.slug}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-[color:var(--color-hairline)] bg-[color:var(--color-surface-strong)] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--color-primary)]/40 hover:shadow-[0_18px_50px_rgba(27,23,20,0.10)]"
+                    className="group flex h-full flex-col overflow-hidden rounded-xl bg-[color:var(--color-surface-strong)] shadow-[0_1px_0_var(--color-hairline)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(27,23,20,0.14)]"
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-[color:var(--color-surface)]">
-                      <Image
-                        src={img}
-                        alt={hero?.alt || post.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col gap-3 p-5">
-                      {topic && <span className="kicker text-[0.66rem]">{topic}</span>}
-                      <h2 className="font-display text-lg font-semibold leading-snug text-[color:var(--color-ink)] group-hover:text-[color:var(--color-primary)]">
-                        {post.title}
-                      </h2>
+                    <ArticleBanner
+                      seed={post.slug}
+                      title={post.title}
+                      label={topic}
+                      titleAs="h2"
+                      className="aspect-[16/10] rounded-xl transition-transform duration-500 group-hover:scale-[1.015]"
+                      titleClassName="font-display text-base font-semibold leading-snug text-white line-clamp-3"
+                    />
+                    <div className="flex flex-1 flex-col gap-3 px-1.5 pb-1.5 pt-4">
                       <p className="line-clamp-3 text-sm leading-relaxed text-[color:var(--color-text-secondary)]">
                         {post.excerpt}
                       </p>
-                      <div className="mt-auto flex items-center justify-between border-t border-[color:var(--color-hairline)] pt-3 text-xs text-[color:var(--color-text-secondary)]">
+                      <div className="mt-auto flex items-center justify-between pt-1 text-xs text-[color:var(--color-text-secondary)]">
                         {post.readingTime ? (
                           <span className="inline-flex items-center gap-1.5">
                             <Clock className="h-3 w-3" /> {post.readingTime} phút đọc
