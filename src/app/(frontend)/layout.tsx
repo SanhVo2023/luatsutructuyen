@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { MotionProvider } from '@/components/providers/MotionProvider'
 import { SiteHeader } from '@/components/layout/SiteHeader'
 import { SiteFooter } from '@/components/layout/SiteFooter'
@@ -29,13 +29,30 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
+/**
+ * Mobile viewport handling for the new Chrome (Android edge-to-edge) and Safari
+ * (iOS 26 floating address bar) behaviours:
+ * - viewportFit: 'cover' lets the page extend under the browser/system bars and
+ *   exposes the env(safe-area-inset-*) values our fixed elements pad against.
+ * - interactiveWidget: 'resizes-content' makes the on-screen keyboard shrink the
+ *   layout viewport (Chrome/Firefox) so form CTAs aren't hidden behind it.
+ * Full-height/fixed UI uses dynamic viewport units (dvh/svh) instead of vh so it
+ * tracks the collapsing toolbar instead of being occluded by it.
+ */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  interactiveWidget: 'resizes-content',
+}
+
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="vi"
       className={`${beVietnamPro.variable} ${lora.variable} ${jetBrainsMono.variable}`}
     >
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-[100svh] flex-col">
         <JsonLd data={[organizationJsonLd(SITE_URL), websiteJsonLd(SITE_URL)]} />
         <MotionProvider>
           <SiteHeader />

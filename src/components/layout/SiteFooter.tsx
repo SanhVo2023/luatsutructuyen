@@ -123,7 +123,7 @@ export async function SiteFooter() {
 
       {/* Colophon bottom bar */}
       <div className="relative border-t border-[color:var(--color-background)]/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-xs text-[color:var(--color-background)]/55 md:flex-row md:items-center md:justify-between md:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] text-xs text-[color:var(--color-background)]/55 md:flex-row md:items-center md:justify-between md:px-6 lg:px-8">
           <p>
             © {currentYear} {vn.shortName}. Mọi quyền được bảo lưu.
           </p>

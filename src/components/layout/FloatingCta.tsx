@@ -32,7 +32,9 @@ export function FloatingCta() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 24 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-5 right-5 z-30 md:bottom-8 md:right-8"
+          // bottom offset includes env(safe-area-inset-bottom) so the pill clears
+          // the home indicator / floating address bar on new Chrome & Safari.
+          className="fixed right-5 z-30 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] md:right-8 md:bottom-[calc(2rem+env(safe-area-inset-bottom))]"
         >
           <a
             href={HOTLINE_TEL}

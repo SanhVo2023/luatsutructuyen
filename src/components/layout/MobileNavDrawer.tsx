@@ -51,7 +51,16 @@ export function MobileNavDrawer({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[70] flex flex-col bg-[color:var(--color-background)] lg:hidden"
+          // h-[100dvh] tracks the *visible* viewport (excludes the collapsing/
+          // floating browser bar), and the safe-area padding keeps the masthead
+          // clear of the notch and the bottom "Gọi" CTA clear of the home
+          // indicator / floating address bar on new Chrome & Safari.
+          style={{
+            height: '100dvh',
+            paddingTop: 'env(safe-area-inset-top)',
+            paddingBottom: 'env(safe-area-inset-bottom)',
+          }}
+          className="fixed inset-x-0 top-0 z-[70] flex flex-col bg-[color:var(--color-background)] lg:hidden"
         >
             <span className="grain" />
             <div className="relative flex h-16 items-center justify-between border-b border-[color:var(--color-hairline)] px-5">
