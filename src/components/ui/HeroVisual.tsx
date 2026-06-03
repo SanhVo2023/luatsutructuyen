@@ -18,12 +18,14 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 const GOLD = 'var(--color-secondary)'
 const GOLD_LITE = '#E6B85C'
 
+// Names of currently-effective Vietnamese codes/laws ("các bộ luật hiện hành") —
+// reinforces the thesis: a real lawyer works with the law in force today.
 const CITATIONS = [
-  { t: 'Điều 430 BLDS 2015', x: '2%', y: '22%', d: '0s' },
-  { t: 'Điều 51 Luật HN&GĐ', x: '68%', y: '14%', d: '1.4s' },
-  { t: 'Điều 202 Luật Đất đai', x: '70%', y: '64%', d: '3s' },
-  { t: 'Điều 36 BLLĐ 2019', x: '0%', y: '62%', d: '4.3s' },
-  { t: 'Khoản 2 Điều 12 LDN', x: '38%', y: '84%', d: '2.2s' },
+  { t: 'Bộ luật Dân sự 2015', x: '3%', y: '21%', d: '0s' },
+  { t: 'Luật Đất đai 2024', x: '66%', y: '14%', d: '1.4s' },
+  { t: 'Bộ luật Lao động 2019', x: '60%', y: '64%', d: '3s' },
+  { t: 'Luật Doanh nghiệp 2020', x: '6%', y: '63%', d: '4.3s' },
+  { t: 'Luật Hôn nhân & Gia đình', x: '33%', y: '84%', d: '2.2s' },
 ]
 
 const PARTICLES = [
@@ -177,14 +179,17 @@ export function HeroVisual() {
           style={{ transform: 'translateZ(46px)', filter: 'drop-shadow(0 0 14px color-mix(in srgb, var(--color-secondary) 38%, transparent))' }}
         >
           <svg viewBox="0 0 300 300" className="absolute inset-0 h-full w-full" fill="none">
-            {/* static frame: base, column, finial */}
+            {/* static frame: base, column, finial.
+                NOTE: the column is a <rect>, not a vertical <line> — a zero-width
+                line has a degenerate objectBoundingBox so url(#hvGold) renders
+                nothing (the column went invisible). A rect has real area. */}
             <g strokeLinecap="round" strokeLinejoin="round">
-              <path d="M120 262 H180 L172 250 H128 Z" fill="url(#hvGold)" fillOpacity="0.9" />
-              <rect x="145" y="244" width="10" height="8" rx="1" fill="url(#hvGold)" />
-              <line x1="150" y1="246" x2="150" y2="100" stroke="url(#hvGold)" strokeWidth="5.5" />
-              <circle cx="150" cy="176" r="6.5" fill="none" stroke="url(#hvGold)" strokeWidth="2" />
-              <circle cx="150" cy="100" r="6.5" fill="url(#hvGold)" />
-              <path d="M150 74 l7.5 11 -7.5 11 -7.5 -11 Z" fill="url(#hvGold)" />
+              <path d="M118 263 H182 L173 249 H127 Z" fill="url(#hvGold)" fillOpacity="0.9" />
+              <rect x="143" y="244" width="14" height="7" rx="1.5" fill="url(#hvGold)" />
+              <rect x="146.5" y="100" width="7" height="150" rx="3" fill="url(#hvGold)" />
+              <circle cx="150" cy="176" r="7" fill="none" stroke="url(#hvGold)" strokeWidth="2.5" />
+              <circle cx="150" cy="100" r="7" fill="url(#hvGold)" />
+              <path d="M150 73 l8 12 -8 12 -8 -12 Z" fill="url(#hvGold)" />
             </g>
 
             {/* balancing beam + pans (CSS sway around the pivot) */}
